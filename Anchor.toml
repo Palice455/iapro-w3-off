@@ -1,0 +1,32 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+ai_token_program = "9E5KGHPmNMf3RTEuRD19xV3oXzkZZJirCukD5GuXoVn"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/Users/apple/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 --require tests/fixtures.ts tests/test_cases/t1_initialize_program.ts tests/test_cases/*.ts"
+
+[test]
+startup_wait = 500
+shutdown_wait = 2000
+upgradeable = false
+
+[[test.genesis]]
+address = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+program = "assets/test/token_metadata.so"
+
+[test.validator]
+bind_address = "127.0.0.1"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
